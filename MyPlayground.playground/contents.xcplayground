@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true'>
+    <pages>
+        <page name='TypeDemo'/>
+        <page name='MVC'/>
+        <page name='Function'/>
+        <page name='GenericType'/>
+        <page name='Test'/>
+        <page name='CoreAnimation'/>
+        <page name='TestButtonEdges'/>
+        <page name='leeCode算法题'/>
+        <page name='十大经典算法实现'/>
+        <page name='其他算法'/>
+        <page name='GCD'/>
+        <page name='SomeContent'/>
+        <page name='自动下载多媒体算法'/>
+        <page name='正则表达式'/>
+    </pages>
+</playground>
