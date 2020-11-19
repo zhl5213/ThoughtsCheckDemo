@@ -78,6 +78,9 @@
 		61F1419A18A400A0DD01276D /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26618E2A3D8B403BC5E3EBE /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.release.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		F41458C525668FD000968DAE /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		F41458CC2566913D00968DAE /* AMapPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AMapPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F41458D02566918C00968DAE /* AGamePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AGamePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F41458D4256691E600968DAE /* ViewTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ViewTest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F45CA62E2515FD8600A13456 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45CA6312515FD8600A13456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F45CA6332515FD8600A13456 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +193,9 @@
 		F45CA6252515FD8600A13456 = {
 			isa = PBXGroup;
 			children = (
+				F41458D4256691E600968DAE /* ViewTest.playground */,
+				F41458D02566918C00968DAE /* AGamePlayground.playground */,
+				F41458CC2566913D00968DAE /* AMapPlayground.playground */,
 				F41458C525668FD000968DAE /* MyPlayground.playground */,
 				F45CA6302515FD8600A13456 /* DemoApp */,
 				F45CA6472515FD8800A13456 /* DemoAppTests */,
