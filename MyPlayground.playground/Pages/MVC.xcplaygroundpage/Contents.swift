@@ -144,11 +144,19 @@ class MyViewController : UIViewController {
         super.viewWillAppear(animated)
     }
     
-    
+    var transforms:[CGFloat] = [-50,-50,-100,-100,0,50,50,100,100,0]
+    var index = 0
     @objc func buttonIsTapped(sender:UIButton) -> () {
         sender.isSelected = !sender.isSelected
         print("button is tapped, state is \(sender.state),")
-        multiplyLabel.numberOfLines = sender.isSelected ? 0 : 3
+        
+        multiplyLabel.transform = CGAffineTransform.init(translationX: 0, y: transforms[index])
+        if index == transforms.count - 1 {
+            index = 0
+        }else {
+            index += 1
+        }
+//        multiplyLabel.numberOfLines = sender.isSelected ? 0 : 3
 //        UIView.animate(withDuration: 0.25) {
 //            self.multiplyLabel.layoutIfNeeded()
 //        }

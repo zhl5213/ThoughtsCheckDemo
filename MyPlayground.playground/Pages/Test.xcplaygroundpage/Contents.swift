@@ -3,6 +3,36 @@
 import Foundation
 import PlaygroundSupport
 import UIKit
+import Darwin
+
+//CInt addTwo(CInt a,CInt b) {
+//  return a + b
+//}
+var string:String = "1235guhiojvcfvbknlmn67890-98"
+for char in string {
+    if char <= "9" && char >= "0" {
+        print("in \(string) find  number char \(char) ")
+    }
+}
+
+var str = "hello,world"
+let firstStr = "\(str.removeFirst())"
+
+print("new str is \(str),firstStr is \(firstStr)")
+
+let binInt:Int = 0b11000
+let bstring = String.init(format: "%#X", binInt)
+print("bin int is \(bstring)")
+
+
+let oxhInt:Int = 0o123576653
+let oxtring = String.init(format: "%d", oxhInt)
+print("bin int is \(oxtring)")
+
+
+let hexhInt:Int = 0xafad1223
+let hextring = String.init(format: "%d", hexhInt)
+print("bin int is \(hextring)")
 
 
 

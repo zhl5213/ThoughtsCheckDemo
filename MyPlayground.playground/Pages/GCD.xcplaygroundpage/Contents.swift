@@ -2,6 +2,10 @@
 
 import Foundation
 
+class TestObject:NSObject {
+    var name:String?
+}
+
 class SomeClass:NSObject {
     let semaphore = DispatchSemaphore.init(value: 1)
     private let councurrentQueue = DispatchQueue.init(label: "cn.com.minieye.cc.test.someClass.concurrent", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
@@ -12,8 +16,8 @@ class SomeClass:NSObject {
 //    read property is even number 偶数，is value is 18
 //    read property is even number 偶数，is value is 18
     var changedValueTimes:Int = 0
-    private var _propertyRW:[String:String]? = ["name":"jask","age":"13","gender":"female"]
-    var propertyRW:[String:String]?
+    private var _propertyRW:TestObject?
+    var propertyRW:TestObject?
     {
 //        set{
 //            semaphore.wait()
@@ -27,33 +31,35 @@ class SomeClass:NSObject {
 //            return _propertyRW
 //        }
         set{
-            councurrentQueue.async(flags: .barrier, execute: { [unowned self] in
+            semaphore.wait(timeout: DispatchTime.now())
+            councurrentQueue.async(flags: .barrier, execute: {
                 self._propertyRW = newValue
-                print("---set new property \(newValue?["age"]) in thread \(Thread.current)")
+                print("---set new property \(newValue?.name) in thread \(Thread.current)")
             })
         }
         get{
-            var value:[String:String]?
+            var value:TestObject?
             councurrentQueue.sync(execute: {
                 value = _propertyRW
+                print("-get new property \(value?.name) in thread \(Thread.current)")
             })
             return value
         }
     }
-    
-    
 }
 
 let instance = SomeClass.init()
 
 func readAndWriteProperty() -> () {
     let anotherQueue = DispatchQueue.init(label: "cn.com.minieye.cc.test.someClass.concurrent2", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
-    for i in 0..<20 {
+    for i in 0..<1000 {
         anotherQueue.async {
-            instance.propertyRW?["age"] = "\(i)"
+            print("get new property \(String(describing: instance.propertyRW?.name)) in thread \(Thread.current)")
         }
         anotherQueue.async {
-            print("get new property \(String(describing: instance.propertyRW?["age"])) in thread \(Thread.current)")
+            let newOb = TestObject.init()
+            newOb.name = "name \(i)"
+            instance.propertyRW = newOb
         }
     }
 }
@@ -100,17 +106,17 @@ let secondFinalBlock = {
 }
 
 
-let customConcurrentQueue = DispatchQueue.init(label: "cn.com.minieye.cc.test", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
 let customSerialQueue = DispatchQueue.init(label: "cn.com.minieye.www.test.serailTest", qos: .default, attributes: [], autoreleaseFrequency: .workItem, target: nil)
+
+let customConcurrentQueue = DispatchQueue.init(label: "cn.com.minieye.cc.test", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
+let customConcurrentQueue2 = DispatchQueue.init(label: "cn.com.minieye.cc.test2", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
+
 let group = DispatchGroup.init()
 
-
-customConcurrentQueue.async(group: nil, qos: .default, flags: .barrier, execute: firstBlock)
-customConcurrentQueue.sync(execute: secondBlock)
-customConcurrentQueue.async(group: nil, qos: .default, flags: .barrier, execute: thirdBlock)
-customConcurrentQueue.sync(execute: fourthBlock)
-
-
+DispatchQueue.concurrentPerform(iterations: 10) { (index) in
+    print("current idnex is \(index),thread is \(Thread.current)")
+}
+finalBlock()
 //1.普通的异步执行。firstBlock执行一句话，secondBlock执行一句话，立即执行finalBlock。
 //customConcurrentQueue.async(execute: firstBlock)
 //customConcurrentQueue.async(execute: secondBlock)

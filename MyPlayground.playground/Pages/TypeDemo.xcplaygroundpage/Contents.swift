@@ -4,7 +4,6 @@ import Foundation
 import UIKit
 
 
-
 //结构体-------------------------
 struct StructModel {
     var name:String

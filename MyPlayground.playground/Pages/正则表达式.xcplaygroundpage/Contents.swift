@@ -33,12 +33,15 @@ let needTestEmails = ["","21300.@","1231@.","123.com","123@.com","132中文@中�
 
 
 for email in needTestEmails {
-    do {
-        try String.check(Email: email)
+    if let _ =  try? String.check(Email: email){
         print("\(email) is valid")
-    } catch {
-        print("\(email) is not valid,error is \(error as! StringError)")
     }
+//    do {
+//        try String.check(Email: email)
+//        print("\(email) is valid")
+//    } catch {
+//        print("\(email) is not valid,error is \(error as! StringError)")
+//    }
 }
 
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A2835CB9CF270880090AC45 /* Pods_DemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F1419A18A400A0DD01276D /* Pods_DemoApp.framework */; };
+		F41246D12568B89E0046A5ED /* ARCUTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F41246D02568B89E0046A5ED /* ARCUTTest.m */; };
 		F45CA6322515FD8600A13456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45CA6312515FD8600A13456 /* AppDelegate.swift */; };
 		F45CA6342515FD8600A13456 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45CA6332515FD8600A13456 /* SceneDelegate.swift */; };
 		F45CA6392515FD8600A13456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45CA6372515FD8600A13456 /* Main.storyboard */; };
@@ -26,7 +27,6 @@
 		F46D1A3225172D210005F1BB /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1A2725172D210005F1BB /* Debug.swift */; };
 		F46D1A3325172D210005F1BB /* LogTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1A2825172D210005F1BB /* LogTool.swift */; };
 		F46D1A3425172D210005F1BB /* LocationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1A2925172D210005F1BB /* LocationTool.swift */; };
-		F46D1A6225172E4E0005F1BB /* SomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D1A6125172E4E0005F1BB /* SomeView.m */; };
 		F46D1A7B25172E8F0005F1BB /* NSObject+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1A6725172E8F0005F1BB /* NSObject+Ex.swift */; };
 		F46D1A7C25172E8F0005F1BB /* UIDevice+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1A6825172E8F0005F1BB /* UIDevice+Ex.swift */; };
 		F46D1A7E25172E8F0005F1BB /* UIViewController+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1A6A25172E8F0005F1BB /* UIViewController+Ex.swift */; };
@@ -77,6 +77,8 @@
 		0D87A92500FCD09F13508075 /* Pods-DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.debug.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		61F1419A18A400A0DD01276D /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26618E2A3D8B403BC5E3EBE /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.release.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
+		F41246CF2568B89D0046A5ED /* DemoAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		F41246D02568B89E0046A5ED /* ARCUTTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARCUTTest.m; sourceTree = "<group>"; };
 		F41458C525668FD000968DAE /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		F41458CC2566913D00968DAE /* AMapPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AMapPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F41458D02566918C00968DAE /* AGamePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AGamePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -106,8 +108,6 @@
 		F46D1A2825172D210005F1BB /* LogTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTool.swift; sourceTree = "<group>"; };
 		F46D1A2925172D210005F1BB /* LocationTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTool.swift; sourceTree = "<group>"; };
 		F46D1A5F25172E4E0005F1BB /* DemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		F46D1A6025172E4E0005F1BB /* SomeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SomeView.h; sourceTree = "<group>"; };
-		F46D1A6125172E4E0005F1BB /* SomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeView.m; sourceTree = "<group>"; };
 		F46D1A6725172E8F0005F1BB /* NSObject+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Ex.swift"; sourceTree = "<group>"; };
 		F46D1A6825172E8F0005F1BB /* UIDevice+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ex.swift"; sourceTree = "<group>"; };
 		F46D1A6A25172E8F0005F1BB /* UIViewController+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ex.swift"; sourceTree = "<group>"; };
@@ -233,8 +233,6 @@
 				F45CA63A2515FD8800A13456 /* Assets.xcassets */,
 				F45CA63C2515FD8800A13456 /* LaunchScreen.storyboard */,
 				F45CA63F2515FD8800A13456 /* Info.plist */,
-				F46D1A6025172E4E0005F1BB /* SomeView.h */,
-				F46D1A6125172E4E0005F1BB /* SomeView.m */,
 				F46D1A5F25172E4E0005F1BB /* DemoApp-Bridging-Header.h */,
 			);
 			path = DemoApp;
@@ -245,6 +243,8 @@
 			children = (
 				F45CA6482515FD8800A13456 /* DemoAppTests.swift */,
 				F45CA64A2515FD8800A13456 /* Info.plist */,
+				F41246D02568B89E0046A5ED /* ARCUTTest.m */,
+				F41246CF2568B89D0046A5ED /* DemoAppTests-Bridging-Header.h */,
 			);
 			path = DemoAppTests;
 			sourceTree = "<group>";
@@ -453,6 +453,7 @@
 					};
 					F45CA6432515FD8800A13456 = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1200;
 						TestTargetID = F45CA62D2515FD8600A13456;
 					};
 					F45CA64E2515FD8800A13456 = {
@@ -562,7 +563,6 @@
 				F46D1A3025172D210005F1BB /* StringCheck.swift in Sources */,
 				F46D1AEE251743D10005F1BB /* ChatInfoTableViewCell.swift in Sources */,
 				F46D1A2C25172D210005F1BB /* BasicTool.swift in Sources */,
-				F46D1A6225172E4E0005F1BB /* SomeView.m in Sources */,
 				F46D1A3425172D210005F1BB /* LocationTool.swift in Sources */,
 				F46D1AD02517339A0005F1BB /* MyViewController.swift in Sources */,
 				F46D1A8125172E8F0005F1BB /* Optional+Ex.swift in Sources */,
@@ -604,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F45CA6492515FD8800A13456 /* DemoAppTests.swift in Sources */,
+				F41246D12568B89E0046A5ED /* ARCUTTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,12 +702,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DemoApp/DemoApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -756,11 +758,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DemoApp/DemoApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -786,7 +789,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cc.minieye.zhuhuilin.DemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "DemoApp/DemoApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DemoApp/DemoApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -813,7 +816,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cc.minieye.zhuhuilin.DemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "DemoApp/DemoApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DemoApp/DemoApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -824,10 +827,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UGQ7XHC9ZT;
 				INFOPLIST_FILE = DemoAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -835,6 +839,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.minieye.zhuhuilin.DemoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoApp.app/DemoApp";
@@ -846,10 +852,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UGQ7XHC9ZT;
 				INFOPLIST_FILE = DemoAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -857,6 +864,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.minieye.zhuhuilin.DemoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoApp.app/DemoApp";
@@ -877,6 +885,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.minieye.zhuhuilin.DemoAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DemoApp;
@@ -897,6 +906,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.minieye.zhuhuilin.DemoAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DemoApp;
