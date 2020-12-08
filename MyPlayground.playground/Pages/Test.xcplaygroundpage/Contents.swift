@@ -5,6 +5,76 @@ import PlaygroundSupport
 import UIKit
 import Darwin
 
+let floatArray:[Float] = [120,121,122,123,124,125]
+
+for value in floatArray {
+    var targetValue:Float = value
+    if Int(targetValue) % 5 != 0 {
+        let intTargetValue = Int(targetValue)
+        var divisionValue = intTargetValue / 5
+        if abs((divisionValue + 1) * 5 - intTargetValue) < abs(divisionValue * 5 - intTargetValue) {
+            divisionValue = divisionValue + 1
+        }
+        targetValue = Float(divisionValue * 5)
+    }
+    print(" origin value is \(value), final targetValue is \( String.init(format: "%dcm", Int(targetValue)))")
+}
+
+
+
+struct AlertMessage:Equatable {
+    var level:Int
+    var message:String
+    var hasUserInteraction:Bool
+    
+}
+
+var handledMessages:[AlertMessage] = [AlertMessage]()
+
+func handlerAlertMessage(_ message:AlertMessage) -> () {
+    if handledMessages.contains(where: { $0 == message }) == false {
+        handledMessages.append(message)
+    }else{
+        let index = handledMessages.firstIndex(where: { $0 == message })!
+        handledMessages.replaceSubrange(index...index, with: [message])
+    }
+    handledMessages = handledMessages.sorted(by: { $0.level < $1.level })
+//    print("handler alert message is \(message),handledMessages is \(handledMessages)")
+}
+
+func removeAlertMessage(_ levels:[Int]) -> () {
+    for level in levels {
+        if let index = handledMessages.firstIndex(where: { $0.level == level }) {
+            handledMessages.remove(at: index)
+        }
+    }
+       print("remove  alert levels is \(levels),handledMessages is \(handledMessages)")
+    
+}
+
+let tenMessage = AlertMessage.init(level: 10, message: "10", hasUserInteraction: false)
+let tenMessage2 = AlertMessage.init(level: 6, message: "6", hasUserInteraction: false)
+let handrndMessage1 = AlertMessage.init(level: 101, message: "100", hasUserInteraction: true)
+let handrndMessage2 = AlertMessage.init(level: 110, message: "110", hasUserInteraction: true)
+let handrndMessage3 = AlertMessage.init(level: 210, message: "210", hasUserInteraction: true)
+let handrndMessage4 = AlertMessage.init(level: 209, message: "209", hasUserInteraction: true)
+
+let allMEssages = [tenMessage,tenMessage2,handrndMessage1,handrndMessage2,handrndMessage3,handrndMessage4]
+var copyMessages = allMEssages
+//
+for _  in (0..<allMEssages.count) {
+    let randIndex = (0..<copyMessages.count).randomElement()
+    handlerAlertMessage(copyMessages.remove(at: randIndex!))
+}
+
+var removedCopyMessages = allMEssages
+for _  in (0..<allMEssages.count) {
+    let randIndex = (0..<removedCopyMessages.count).randomElement()
+    removeAlertMessage([removedCopyMessages.remove(at: randIndex!).level])
+}
+
+
+
 //CInt addTwo(CInt a,CInt b) {
 //  return a + b
 //}

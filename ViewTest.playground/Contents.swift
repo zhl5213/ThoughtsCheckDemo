@@ -3,6 +3,15 @@
 import UIKit
 import PlaygroundSupport
 
+class MyTextField:UITextField {
+    
+    override func deleteBackward() {
+        super.deleteBackward()
+        print(" delete back ward called")
+    }
+    
+}
+
 class MyViewController : UIViewController,UITextFieldDelegate {
     
     lazy var codeView: UITextField = {
@@ -20,8 +29,8 @@ class MyViewController : UIViewController,UITextFieldDelegate {
     }()
     
     
-    private func createCodeField() -> UITextField {
-        let field = UITextField.init()
+    private func createCodeField() -> MyTextField {
+        let field = MyTextField.init()
         field.textColor = .black
         field.textAlignment = .center
         field.keyboardType = .numberPad
@@ -76,6 +85,10 @@ class MyViewController : UIViewController,UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("textFieldDidBeginEditing ")
     }
     
     var inputValue = ""
