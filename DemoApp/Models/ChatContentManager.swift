@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 
 struct UserInfo {
     var personName:String
@@ -31,6 +31,7 @@ struct PersonChatContent {
     var lastReadChatContent:ChatMessage?
     
     var hasMesageUnread:Bool{
+        AVAudioSession.sharedInstance().currentRoute.outputs
         if let chatContents = chatContents {
             if let trlastReadChatContent = lastReadChatContent {
                 if let lastAnotherContent = chatContents.last(where: {  $0.user.personName != anotherUser.personName }),

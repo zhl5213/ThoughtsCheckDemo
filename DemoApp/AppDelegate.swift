@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SQLite3
+import System
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,8 +23,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = CommonColor.viewBG
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
-        
+//        subThreadDeadLock()
+        let result = [123].sorted(by:<)
+        let callStackReturnAddress = Thread.callStackReturnAddresses
+        let callSymblos = Thread.callStackSymbols
+//        for callAddress in callStackReturnAddress {
+//            print("address is \(callAddress.int64Value)\n")
+//        }
+//        print("---------\n")
+//        for symblo in callSymblos {
+//            print("call symbol is \(symblo)\n")
+//        }
         return true
+    }
+    
+    let serialQueue = DispatchQueue.init(label: "test", qos: .userInitiated, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
+    
+    func subThreadDeadLock() -> () {
+     
+        serialQueue.async {
+            print("dead lock will happen")
+            var value = 0
+            while true {
+                value += 1
+                print("is unlimit cycle,value is \(value)")
+            }
+        }
     }
 
 }

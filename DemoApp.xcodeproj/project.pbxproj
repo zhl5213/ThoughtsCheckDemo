@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A2835CB9CF270880090AC45 /* Pods_DemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F1419A18A400A0DD01276D /* Pods_DemoApp.framework */; };
 		F41246D12568B89E0046A5ED /* ARCUTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F41246D02568B89E0046A5ED /* ARCUTTest.m */; };
+		F4336105258BB0FF0041D4A1 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4336104258BB0FF0041D4A1 /* OCViewController.m */; };
 		F45CA6322515FD8600A13456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45CA6312515FD8600A13456 /* AppDelegate.swift */; };
 		F45CA6342515FD8600A13456 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45CA6332515FD8600A13456 /* SceneDelegate.swift */; };
 		F45CA6392515FD8600A13456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45CA6372515FD8600A13456 /* Main.storyboard */; };
@@ -54,6 +55,9 @@
 		F46D1AF425175E390005F1BB /* ChatContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1AF325175E390005F1BB /* ChatContentManager.swift */; };
 		F46D1B1725184A570005F1BB /* ChatSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D1B1625184A560005F1BB /* ChatSessionViewController.swift */; };
 		F474E548251B909B00885A8B /* ChatSessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F474E547251B909B00885A8B /* ChatSessionTableViewCell.swift */; };
+		F4950CE62722EEC60062C94C /* NSObject+TestProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4950CE52722EEC60062C94C /* NSObject+TestProtocol.m */; };
+		F4A6CFD326FEFBA800FF9DA9 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A6CFD226FEFBA800FF9DA9 /* TestObject.m */; };
+		F4A6CFD826FF2CB300FF9DA9 /* OCPrincipleAndStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A6CFD726FF2CB300FF9DA9 /* OCPrincipleAndStructure.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,8 @@
 		F41458CC2566913D00968DAE /* AMapPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AMapPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F41458D02566918C00968DAE /* AGamePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AGamePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F41458D4256691E600968DAE /* ViewTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ViewTest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F4336103258BB0FF0041D4A1 /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
+		F4336104258BB0FF0041D4A1 /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
 		F45CA62E2515FD8600A13456 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45CA6312515FD8600A13456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F45CA6332515FD8600A13456 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +144,11 @@
 		F46D1AF325175E390005F1BB /* ChatContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatContentManager.swift; sourceTree = "<group>"; };
 		F46D1B1625184A560005F1BB /* ChatSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionViewController.swift; sourceTree = "<group>"; };
 		F474E547251B909B00885A8B /* ChatSessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionTableViewCell.swift; sourceTree = "<group>"; };
+		F4950CE42722EEC60062C94C /* NSObject+TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TestProtocol.h"; sourceTree = "<group>"; };
+		F4950CE52722EEC60062C94C /* NSObject+TestProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TestProtocol.m"; sourceTree = "<group>"; };
+		F4A6CFD126FEFBA800FF9DA9 /* TestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
+		F4A6CFD226FEFBA800FF9DA9 /* TestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
+		F4A6CFD726FF2CB300FF9DA9 /* OCPrincipleAndStructure.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCPrincipleAndStructure.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +197,8 @@
 		F41FF2C0255EBD9800C64A13 /* OCTest */ = {
 			isa = PBXGroup;
 			children = (
+				F4336103258BB0FF0041D4A1 /* OCViewController.h */,
+				F4336104258BB0FF0041D4A1 /* OCViewController.m */,
 			);
 			path = OCTest;
 			sourceTree = "<group>";
@@ -245,6 +258,11 @@
 				F45CA64A2515FD8800A13456 /* Info.plist */,
 				F41246D02568B89E0046A5ED /* ARCUTTest.m */,
 				F41246CF2568B89D0046A5ED /* DemoAppTests-Bridging-Header.h */,
+				F4A6CFD126FEFBA800FF9DA9 /* TestObject.h */,
+				F4A6CFD226FEFBA800FF9DA9 /* TestObject.m */,
+				F4950CE42722EEC60062C94C /* NSObject+TestProtocol.h */,
+				F4950CE52722EEC60062C94C /* NSObject+TestProtocol.m */,
+				F4A6CFD726FF2CB300FF9DA9 /* OCPrincipleAndStructure.m */,
 			);
 			path = DemoAppTests;
 			sourceTree = "<group>";
@@ -558,6 +576,7 @@
 			files = (
 				F46D1A7E25172E8F0005F1BB /* UIViewController+Ex.swift in Sources */,
 				F46D1A8825172E8F0005F1BB /* NSObject+MehodSwizzle.m in Sources */,
+				F4336105258BB0FF0041D4A1 /* OCViewController.m in Sources */,
 				F46D1AC62517337A0005F1BB /* AdressBookViewController.swift in Sources */,
 				F46D1A8325172E8F0005F1BB /* NSBundle+Ex.m in Sources */,
 				F46D1A3025172D210005F1BB /* StringCheck.swift in Sources */,
@@ -603,7 +622,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A6CFD826FF2CB300FF9DA9 /* OCPrincipleAndStructure.m in Sources */,
 				F45CA6492515FD8800A13456 /* DemoAppTests.swift in Sources */,
+				F4A6CFD326FEFBA800FF9DA9 /* TestObject.m in Sources */,
+				F4950CE62722EEC60062C94C /* NSObject+TestProtocol.m in Sources */,
 				F41246D12568B89E0046A5ED /* ARCUTTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -829,7 +851,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UGQ7XHC9ZT;
+				DEVELOPMENT_TEAM = JZ4N33QRV7;
 				INFOPLIST_FILE = DemoAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -854,7 +876,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UGQ7XHC9ZT;
+				DEVELOPMENT_TEAM = JZ4N33QRV7;
 				INFOPLIST_FILE = DemoAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -876,7 +898,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UGQ7XHC9ZT;
+				DEVELOPMENT_TEAM = JZ4N33QRV7;
 				INFOPLIST_FILE = DemoAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -897,7 +919,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UGQ7XHC9ZT;
+				DEVELOPMENT_TEAM = JZ4N33QRV7;
 				INFOPLIST_FILE = DemoAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

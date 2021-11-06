@@ -6,6 +6,37 @@ class TestObject:NSObject {
     var name:String?
 }
 
+let times = 3
+let semaphore = DispatchSemaphore.init(value: -times+1)
+
+print("first thing")
+DispatchQueue.global().async {
+    semaphore.wait()
+    print("need do something after other \(times) things")
+}
+
+DispatchQueue.global().async {
+    print("do first thing")
+//    Thread.sleep(forTimeInterval: 1)
+    semaphore.signal()
+}
+
+DispatchQueue.global().async {
+    print("do second thing")
+//    Thread.sleep(forTimeInterval: 0.5)
+    semaphore.signal()
+}
+
+DispatchQueue.global().async {
+    print("do third thing")
+//    Thread.sleep(forTimeInterval: 1)
+    semaphore.signal()
+}
+
+print("haha main thread thing")
+
+
+
 class SomeClass:NSObject {
     let semaphore = DispatchSemaphore.init(value: 1)
     private let councurrentQueue = DispatchQueue.init(label: "cn.com.minieye.cc.test.someClass.concurrent", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
@@ -256,4 +287,6 @@ finalBlock()
 
 
 
+let operationQueue = OperationQueue.init()
+operationQueue.addOperation(firstBlock)
 

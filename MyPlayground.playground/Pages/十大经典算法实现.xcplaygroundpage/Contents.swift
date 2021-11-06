@@ -90,20 +90,21 @@ print(mergeSort(randomArray15))
  （5）调整完成之后，再执行（3）；循环执行直到堆内元素数量清空。
  */
 
+//对于某个节点，将它的子节点和它的值比较，移动使最大值位于当前节点。如果最大值不是当前节点，就对子节点也执行调整。
 func resetHeap(_ heap:inout [Int],node:Int) {
     let heapNodes = heap.count
-    let leftNode = 2 * node + 1
-    let rightNode = 2 * node + 2
+    let childLeftNode = 2 * node + 1
+    let childRightNode = 2 * node + 2
     var largestNode = node
     
     print("heap is \(heap), at node \(node) value is \(heap[node])")
 
-    if leftNode < heapNodes,heap[largestNode] < heap[leftNode] {
-        largestNode = leftNode
+    if childLeftNode < heapNodes,heap[largestNode] < heap[childLeftNode] {
+        largestNode = childLeftNode
     }
     
-    if rightNode < heapNodes,heap[largestNode] < heap[rightNode] {
-        largestNode = rightNode
+    if childRightNode < heapNodes,heap[largestNode] < heap[childRightNode] {
+        largestNode = childRightNode
     }
     
     if largestNode != node {
@@ -119,6 +120,7 @@ func heapSort(_ array:[Int]) -> [Int] {
     
     let maxheapNodes = array.count / 2
     var heap = array
+    //逆序，从堆的中间节点开始向上，进行堆调整。可以保证所有的节点都能够调整到位。
     for index in (0...maxheapNodes).reversed() {
         resetHeap(&heap, node: index)
     }
@@ -141,7 +143,7 @@ print(heapSort(randomArray15))
 
 //5.希尔排序。希尔排序是对插入排序的优化。它设置一个增量序列IncrementalSequence，使用增量序列中的每个增量将数组划分为若干个子数组，然后对子数组进行插入排序。
 /*
- (1)增量序列一般为[N/2,N/4...1]，对于增量序列中的每个值incremental。将目标数组分为incremental个子数组。这些子数组不是连续的，他们的index是以增量的方式增加的，他们的index一般为[0,incremental,2*incremental...]，[1,1+incremental,1+2*incremental...].
+ (1)增量序列一般为[N/2,N/4,...1]，对于增量序列中的每个值incremental。将目标数组分为incremental个子数组。这些子数组不是连续的，他们的index是以增量的方式增加的，他们的index一般为[0,incremental,2*incremental...]，[1,1+incremental,1+2*incremental...].
  （2）对于每个子数组，进行差值排序。
  （3）实际代码执行过程中，不是按照一个个的序列来执行的；而是交叉进行的（因为按照序列来执行不连续）
  */
@@ -188,7 +190,7 @@ print(xierSort(randomArray15))
 //4.快速排序。快速排序的原理是使用一个基准，然后对比数组中的值，使基准左侧的值都小于该基准，使基准右侧的值都大于该基准。（left、right是为了加速分离数组中的值）。这样，基准本身顺序是正取的，然后将基准左右两侧按照上述方式继续排序（递归执行）。
 /*（1）建立一个基准p。除去基准外的部分，从数组的最左侧选取一个左坐标left，从数组的最右侧选取一个右坐标right。
 （2）left开始向右移动，将其对应的元素与基准比较；
- （3）如果left==right，此次比较结束。如果此时left处的元素比基准p大，就将p和left交换位置，然后p左右和右侧的再次执行同样的排序；否则p不动，将p左右的再次执行排序。
+ （3）如果left==right，此次比较结束。如果相等位置处的元素比基准p大，就将p和相等位置交换位置，否则p不动。然后新位置的p左侧的数组和右侧的数组再次执行同样的排序。
  （4）如果left有大于基准的，将right向左移动；
  （5）如果right有小于基准的，就将left和right交换；
  （6）如果出现left==right，执行（3）
@@ -256,8 +258,6 @@ func quickSort(_ array:[Int])-> [Int] {
 }
 
 print(quickSort(randomArray15))
-
-
 
 
 

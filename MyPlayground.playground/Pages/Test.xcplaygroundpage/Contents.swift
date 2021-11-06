@@ -2,9 +2,27 @@
 
 import Foundation
 import PlaygroundSupport
-import UIKit
 import Darwin
 
+
+let astring:String = "abCDopwe"
+let firstIndex = astring.startIndex
+let thichar = astring[astring.index(firstIndex, offsetBy: 2)]
+print("third char is \(thichar)")
+
+typealias customPath = (row:Int,section:Int)
+
+
+var path:customPath = (row:0,section:0)
+var arrrayP = [customPath]()
+arrrayP.append(path)
+arrrayP.removeAll(where: { $0 == path})
+if path.row == 0,
+   arrrayP.contains(where: { $0 == path }) == true {
+    print("contain")
+}
+
+let indexPath:IndexPath  = IndexPath(row: 0, section: 0)
 let floatArray:[Float] = [120,121,122,123,124,125]
 
 for value in floatArray {

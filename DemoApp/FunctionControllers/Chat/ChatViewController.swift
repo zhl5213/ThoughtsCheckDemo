@@ -7,6 +7,7 @@
 
 import UIKit
 
+var swiftGlobalStr:String = "global swift str"
 
 class ChatViewController: UIViewController {
     
@@ -53,10 +54,16 @@ class ChatViewController: UIViewController {
     }()
     
     var dataSources:[ChatDataSource] = [ChatDataSource]()
-        
+    var opIntArray:[Int]?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
+//        weak var observer:NSObjectProtocol?
+//        observer = NotificationCenter.default.addObserver(forName: nil, object: nil, queue: nil) { (noti) in
+//            print("\(observer)")
+//        }
         
         ChatContentManager.shared.getAllChatContents(){ [weak self] (dataSource) in
             DispatchQueue.main.async {
@@ -95,6 +102,35 @@ class ChatViewController: UIViewController {
     
     @objc func buttonIsTapped(sender:UIButton) -> () {
       print(" button is Tapped")
+       getMachTime()
+    }
+    
+    let absoluteStartTime = "machAbsoluteStartTime"
+    let continueStartTime = "machContinueStartTime"
+    var machAbsoluteTime:UInt64 = 0
+    var machContinueTime:UInt64 = 0
+    
+    func getMachTime() -> () {
+        let defaults = UserDefaults.standard
+
+        if defaults.value(forKey: absoluteStartTime) == nil {
+            defaults.setValue(mach_absolute_time(), forKey: absoluteStartTime)
+            defaults.setValue(mach_continuous_time(), forKey: continueStartTime)
+        }else {
+            
+           let absoluteSeconds = secondsForMach(startTime:defaults.value(forKey: absoluteStartTime) as! UInt64 , endTime: mach_absolute_time())
+            let continueSeconds = secondsForMach(startTime: defaults.value(forKey: continueStartTime) as! UInt64, endTime:mach_continuous_time())
+            print("absoluteSeconds are \(absoluteSeconds),continueSeconds are \(continueSeconds)")
+        }
+      
+    }
+    
+    func secondsForMach(startTime:UInt64,endTime:UInt64) -> TimeInterval {
+        var info = mach_timebase_info_data_t.init()
+        let result = mach_timebase_info(&info)
+        print("mach info  result is \(result)")
+        
+        return 1e-9 * Double(info.numer/info.denom) * Double((endTime - startTime))
     }
 
 }

@@ -12,14 +12,94 @@ extern void _objc_autoreleasePoolPrint(void);
 @interface ARCUTTest : XCTestCase
 @property(nonatomic,strong)NSString * stringValue;
 @property(nonatomic,strong)dispatch_queue_t councurrentQueue;
+@property(nonatomic,copy)NSMutableArray * mutableArray;
+@property(nonatomic,copy)NSArray * array;
+@property(nonatomic,strong)dispatch_semaphore_t semaphore;
+@property(nonatomic,assign)NSInteger times;
+
 @end
 
 @implementation ARCUTTest
+
 @synthesize stringValue = _stringValue;
 
+- (NSMutableArray *)mutableArray{
+    if (_mutableArray == nil) {
+        _mutableArray = [NSMutableArray array];
+        for (int index = 0; index<10; index++) {
+            [_mutableArray addObject:[NSNumber numberWithInt:index]];
+        }
+    }
+    return _mutableArray;
+}
 
-- (void)setUp {
+- (NSArray *)array{
+    if (_array == nil) {
+        _array = [[NSArray alloc]initWithObjects:@1,@2,@3,@4,@5,@6, nil];
+    }
+    return _array;
+}
+
+- (NSInteger)times {
+    return  3;
+}
+
+
+//- (dispatch_semaphore_t)semaphore {
+//    if (_semaphore == nil) {
+//        _semaphore = dispatch_semaphore_create(-self.times + 1);
+//    }
+//    return _semaphore;
+//}
+
+
+- (void)testEventsCombine {
+    XCTestExpectation * pectation = [[XCTestExpectation alloc]initWithDescription:@"asyncDes"];
+    self.semaphore = dispatch_semaphore_create(0);
+
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+        NSLog(@"excuted after wait %ld things has done",(long)self.times);
+        [pectation fulfill];
+    });
     
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+        NSLog(@"first thing will done");
+        [NSThread sleepForTimeInterval:1];
+        dispatch_semaphore_signal(self.semaphore);
+    });
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+        NSLog(@"second thing will done");
+        [NSThread sleepForTimeInterval:0.5];
+        dispatch_semaphore_signal(self.semaphore);
+    });
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+        NSLog(@"third thing will done");
+        [NSThread sleepForTimeInterval:0.5];
+        dispatch_semaphore_signal(self.semaphore);
+    });
+    
+    [self waitForExpectations:@[pectation] timeout:10];
+}
+
+
+
+- (void)testArrayCopy {
+    NSMutableArray * mutableCopyArrayFromOld = [_mutableArray mutableCopy];
+    NSArray * immutableCopyArrayFromMutable = [_mutableArray copy];
+    
+    NSMutableArray * mutableCopyArrayFromImutable = [_array mutableCopy];
+    NSArray * immutableCopyArrayFromOld = [_array copy];
+    
+    NSMutableArray *mutaArrayFromImu = (NSMutableArray *) immutableCopyArrayFromOld;
+    
+    NSLog(@"mutableCopyArrayFromOld is %p,immutableCopyArrayFromMutable is %p,mutableCopyArrayFromImutable is %p,immutableCopyArrayFromOld is %p\n",mutableCopyArrayFromOld,immutableCopyArrayFromMutable,mutableCopyArrayFromImutable,immutableCopyArrayFromOld);
+
+    NSLog(@"mutableCopyArrayFromOld value is %@,immutableCopyArrayFromMutable value is %@,mutableCopyArrayFromImutable value is %@,immutableCopyArrayFromOld value is %@\n",mutableCopyArrayFromOld,immutableCopyArrayFromMutable,mutableCopyArrayFromImutable,immutableCopyArrayFromOld);
 }
 
 - (void)setStringValue:(NSString *)stringValue{
@@ -43,9 +123,6 @@ extern void _objc_autoreleasePoolPrint(void);
     return  _councurrentQueue;
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-}
 
 - (void)testAutoRealeasePool {
     @autoreleasepool {
@@ -58,7 +135,18 @@ extern void _objc_autoreleasePoolPrint(void);
         NSLog(@"strongObject is %@,array is %p",strongObject,array);
         _objc_autoreleasePoolPrint();
         [self callSomeStrongObject:strongObject];
+        
+        [[NSThread mainThread]performSelector:@selector(setMutableArray:) withObject:self];
+        
     }
+}
+
+- (void)testForLoopAutoReleasePool {
+    for (int i = 0; i<1000; i++) {
+        NSObject * object = [[NSObject alloc]init];
+        NSLog(@"object is %@",object);
+    }
+    _objc_autoreleasePoolPrint();
 }
 
 -(void)callSomeStrongObject:(id)objcet {
@@ -71,12 +159,6 @@ extern void _objc_autoreleasePoolPrint(void);
         NSLog(@"canUseWeakObject is %@",canUseWeakObject);
         _objc_autoreleasePoolPrint();
     }
-}
-
-- (void)testPropertyThreadSafe {
-    
-    
-    
 }
 
 - (void)testGCD {
@@ -102,18 +184,6 @@ extern void _objc_autoreleasePoolPrint(void);
     NSArray * pectaionArray = [[NSArray alloc]initWithObjects:pectation, nil];
     [self waitForExpectations:pectaionArray timeout:20];
     
-}
-
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
 }
 
 @end

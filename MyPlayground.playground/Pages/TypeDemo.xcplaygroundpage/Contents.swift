@@ -3,6 +3,148 @@
 import Foundation
 import UIKit
 
+let char = "1"
+
+
+protocol TypePro {
+    associatedtype EType
+    var name:EType{get}
+    func printName() -> EType
+}
+
+protocol Container {
+    associatedtype element:TypePro
+    func appendElement(_ el:element) -> ()
+}
+
+
+
+
+protocol ComPro {
+    var name:String {set get}
+    func someThingAny()
+}
+
+enum SEnum<T>:String,ComPro {
+    case one
+    case two
+    var name: String {
+        set {  print("set")  }
+        get { rawValue }
+    }
+    func someThingAny() {
+        print("enum do")
+    }
+    func set(tValue:T) -> () {
+        
+    }
+}
+
+
+
+struct ComStr:ComPro {
+    var name: String
+    
+    func someThingAny() {
+        print("struct do")
+    }
+}
+
+let strArray = "Ab234cd34kksl"
+var newStr = ""
+let intV = Int.max
+let floatV:Float = Float.greatestFiniteMagnitude
+for chara in strArray.reversed() {
+    if let intValue = Int.init(String(chara)) {
+        print("int  value for \(chara) is \(intValue)")
+    }
+}
+
+
+let lazyArray = [1,2,3,4,5].lazy.filter({ value in print("lazy excute for \(value)") ; return value > 2 })
+    .map({ mapValue -> Int in  print("lazy map for \(mapValue)") ; return mapValue * mapValue })
+print("lazyArray is \(lazyArray)")
+let mapLazyArray = lazyArray.reduce(1, { reduceFirstValue,reduceSecondValue in  print("reduce excute for reduceFirstValue \(reduceFirstValue), reduceSecondValue \(reduceSecondValue)"); return reduceFirstValue * reduceSecondValue })
+print(" lazy array excute reduce is \(mapLazyArray)")
+
+lazyArray.forEach { (value) in
+    print("use array for each value is \(value)")
+}
+
+//let stride =
+
+var dictionary = ["1":2,"2":10,"3":100]
+let lazySequnce = dictionary.lazy
+let lazyFilterSequnce = lazySequnce.filter({ $1 / 10 == 0 })
+let lazyMapFilterSequnce = lazyFilterSequnce.map({ $0.value + 10 })
+dictionary["1"] = 3
+let firstLazyResutvalue = lazyMapFilterSequnce.first
+print("origin dic is \(dictionary)\n lazy sequnce for dic is \(lazySequnce),\n lazy filter sequnce is \(lazyFilterSequnce),lazy map filter sequnce is \(lazyMapFilterSequnce)\nfirstLazyResutvalue is \(firstLazyResutvalue)")
+
+
+
+final class OCCla:NSObject {
+    @objc final var object:NSObject = NSObject.init()
+    
+}
+
+let obj = OCCla.init()
+print("origin obj var is \(obj.object)")
+obj.setValue(NSObject.init(), forKey: #keyPath(OCCla.object))
+print("new obj var is \(obj.object)")
+
+protocol DeProtocol {}
+
+extension DeProtocol {
+    func dething() -> () {
+        print("pro extension do things")
+    }
+}
+
+struct DeStruct:DeProtocol {
+    func dething() -> () {
+        print("concoerate struct do things")
+    }
+}
+
+let pro:DeProtocol = DeStruct.init()
+pro.dething()
+(pro as! DeStruct).dething()
+
+
+func somFunc(firstPar:Int)->(Int,Int)->Int{
+    return { secondPar,thirdPar in
+        return firstPar * firstPar + secondPar * secondPar + thirdPar * thirdPar
+    }
+}
+
+func moreFunc(firstPar:Int)->(Int)->(Int)->Int{
+    return { secondPar in
+        return { thirdPar in
+            return firstPar * firstPar + secondPar * secondPar + thirdPar * thirdPar
+        }
+    }
+}
+
+
+let curryresult = somFunc(firstPar: 6)(5,7)
+let curryResult2 = moreFunc(firstPar: 5)(6)(7)
+print("curry fuc result is \(curryresult),more curry func result is \(curryResult2)")
+
+
+func deFunc(firstPa:Int,secondPra:Int)->Int {
+    return firstPa + secondPra
+}
+
+func excute(firstPar:Int,secondPar:Int,use exfunc:(Int,Int)->Int)->Int{
+    return exfunc(firstPar,secondPar)
+}
+
+let result = excute(firstPar: 3, secondPar: 4, use: deFunc(firstPa:secondPra:))
+
+print(result)
+
+
 
 //结构体-------------------------
 struct StructModel {
@@ -16,6 +158,16 @@ struct StructModel {
 
 let structM = StructModel.init(name: "struct", height: 33)
 structM.doSomething()
+
+let intValue = 100
+let octaValue = 0o17
+let hexValue  = 0x1E
+let binValue  = 0b01011
+let string = String.init(format: "int value in decimal format %d, octal %O,hex %x", arguments: [intValue,intValue,intValue])
+print("will enter input table symbol  \t ")
+print(string)
+print("binary int \(binValue), octal int \(octaValue), decimal int \(intValue),hex int \(hexValue)")
+
 
 
 

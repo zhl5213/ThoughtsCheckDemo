@@ -31,7 +31,7 @@ class MainTabBarVC: UITabBarController,UITabBarControllerDelegate {
         let chatVC = ChatViewController.init()
         let adressBookVC = AdressBookViewController.init()
         let discoveryVC = DiscoveryViewController.init()
-        let myVC = MyViewController.init()
+        let myVC = OCViewController.init()
         let tabBarItemTitle:[String] = ["微信","通讯录","发现","我"]
         let imageName = ["tab_home","tab_device","tab_me","tab_me"]
         var tabBarItemImage = [UIImage]()
