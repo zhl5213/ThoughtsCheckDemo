@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Network
 
 class AdressBookViewController: UIViewController {
     
@@ -29,13 +30,21 @@ class AdressBookViewController: UIViewController {
         return view
     }()
     
+    lazy var downlodbutton: UIButton = {
+        let bt = UIButton.init(type: .custom)
+        bt.setTitle("重新下载", for: .normal)
+        bt.addTarget(self, action: #selector(tryDownloadParall), for: .touchUpInside)
+        bt.setTitleColor(UIColor.green, for: .normal)
+        return bt
+    }()
+    
     var dataSource:[(fileName:String,speed:String)] = []
     let fileInfo:[(name:String,urlStr:String)] = [(name:"first","https://dl.softmgr.qq.com/original/im/QQ9.5.1.27888.exe"),
-                                                  (name: "second","https://dldir1.qq.com/weixin/mac/WeChatMac.dmg"),
-                                                  (name: "third", "https://pm.myapp.com/invc/xfspeed/qqpcmgr/download/QQPCDownload46363.exe"),
+                                                  /*(name: "second","https://dldir1.qq.com/weixin/mac/WeChatMac.dmg"),
+                                                  (name: "third", "https://sta-op.douyucdn.cn/dy-app-pkg/douyu_client_123_0v1_3_7.dmg"),
                                                   (name: "four", "https://dl.softmgr.qq.com/original/Office/WeCom_3.1.18.6007_100004.exe"),
                                                   (name: "five", "https://y.qq.com/#:~:text=%E5%AE%A2%E6%88%B7%E7%AB%AF-,%E4%B8%8B%E8%BD%BD"),
-                                                  /*(name: "six", "https://u.163.com/macds?device=desktop&device_id=4da2b101-82ae-483a-83f3-9e98ca9106ef&os=Mac%20OS&os_version=10.15.7&product=mailmac&resolution=1440x900&uuid=2e506c98f31b479b45206dd6b5099dd3"),
+                                                  (name: "six", "https://u.163.com/macds?device=desktop&device_id=4da2b101-82ae-483a-83f3-9e98ca9106ef&os=Mac%20OS&os_version=10.15.7&product=mailmac&resolution=1440x900&uuid=2e506c98f31b479b45206dd6b5099dd3"),
                                                   (name: "seven", "https://u.163.com/pcds?device=desktop&device_id=4da2b101-82ae-483a-83f3-9e98ca9106ef&os=Mac%20OS&os_version=10.15.7&product=mailmac&resolution=1440x900&uuid=2e506c98f31b479b45206dd6b5099dd3"),
                                                   (name: "eight", "https://nie.v.netease.com/nie/2021/0809/8e75f9002ceab257d975fee07182c66c.mp4")*/
                                                   
@@ -47,9 +56,11 @@ class AdressBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.addSubview(tableView)
-        dataSource = fileInfo.map({ return ( $0.name,"0") })
+//        dataSource = fileInfo.map({ return ( $0.name,"0") })
 //        tableView.reloadData()
+      
         var index = 0
+        var lastLabel:UILabel = UILabel.init()
         fileInfo.forEach { (name,urlStr) in
             let label = UILabel.init(frame: CGRect.init(x: 0, y: 100 + index * 50, width: Int(ScreenW), height: 50))
             label.textAlignment = .center
@@ -57,13 +68,21 @@ class AdressBookViewController: UIViewController {
             label.text = "\(name),speed:0"
             labels[name] = label
             view.addSubview(label)
+            lastLabel = label
             index += 1
         }
         
-        tryDownloadParall()
+        view.addSubview(downlodbutton)
+        downlodbutton.mas_makeConstraints { (make) in
+            make?.centerX.equalTo()
+            make?.height.equalTo()(30)
+            make?.top.equalTo()(lastLabel.mas_bottom)?.offset()(20)
+        }
+        
     }
     
-    func tryDownloadParall() -> () {
+    
+    @objc func tryDownloadParall() -> () {
         for file in fileInfo {
             downloadFileWith(name: file.name, file.urlStr)
         }
@@ -72,7 +91,6 @@ class AdressBookViewController: UIViewController {
     func downloadFileWith(name:String,_ url:String) -> () {
         let documentUrlPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let fileUrl = URL.init(fileURLWithPath: documentUrlPath.appending("/\(name).dmg"))
-        print("document url path is \(documentUrlPath),file url is \(fileUrl)\n")
         startTimes[fileUrl] = CFAbsoluteTimeGetCurrent()
         
         if FileManager.default.fileExists(atPath: fileUrl.path) {
@@ -83,6 +101,7 @@ class AdressBookViewController: UIViewController {
         let fileDestination:DownloadRequest.DownloadFileDestination = { (tempUrl,response) in
             return (fileUrl,.createIntermediateDirectories)
         }
+        print("document url path is \(documentUrlPath),file url is \(fileUrl),will download \(url) \n")
         Alamofire.download(URL.init(string: url)!, to: fileDestination).downloadProgress { (progress) in
             let downloadTime = (CFAbsoluteTimeGetCurrent() - self.startTimes[fileUrl]!)
             let  averageSpeed = Double(progress.completedUnitCount) / (downloadTime) / 1024

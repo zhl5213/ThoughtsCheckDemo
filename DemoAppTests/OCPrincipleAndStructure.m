@@ -50,6 +50,20 @@ typedef NSInteger (^caculateBlock)(NSInteger firstPar,NSInteger secondPa);
     [self waitForExpectations:@[textExpectation] timeout:30];
 }
 
+- (void)testNSMutableArrayGCD {
+    XCTestExpectation * textExpectation = [[XCTestExpectation alloc]initWithDescription:@"123"];
+
+    for (int i = 0; i<20000; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            self.array = [NSMutableArray array];
+            NSLog(@"set array for index %d at thread %@",i,[NSThread currentThread].name);
+        });
+    }
+    [self waitForExpectations:@[textExpectation] timeout:30];
+
+}
+
+
 - (void)testFunction {
     NSInteger result = self.stackBlock(10, 15);
     NSLog(@"type of stack block is %@,result is %d",[self.stackBlock class],result);
